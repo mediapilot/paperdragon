@@ -25,7 +25,6 @@ module Paperdragon
     end
 
     def data
-      puts "........................FETCH  (data): #{uid}, #{@data ? :cached : (:fetching)}"
       @data ||= Dragonfly.app.fetch(uid).data
     end
 
@@ -46,7 +45,7 @@ module Paperdragon
 
     # Override if you want to include/exclude properties in this file metadata.
     def default_metadata_for(job)
-      {:width => job.width, :height => job.height, :uid => uid}#, :content_type => job.mime_type}
+      {uid: uid}
     end
 
     def metadata_for(job, additional={})
